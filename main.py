@@ -24,7 +24,6 @@ def full_analysis(run):
         raw = pd.read_csv('dataset/articles.csv', encoding='latin-1')
         data = raw.Full_Article
         lb, type = raw.Article_Type.factorize()
-        run = False
         if run:
             final_rev = []
             "stop word and stemming is used for pre_processing"
@@ -54,7 +53,6 @@ def full_analysis(run):
         return data, pre_data, lb
 
     def vectorization_(data):
-        run=False
         " Sentence bert is used "
         if run:
             model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
@@ -64,7 +62,6 @@ def full_analysis(run):
         return vect_data
 
     def smote_(feat, label):
-        run=False
         if run:
             smote = SMOTE(random_state=42)
             x_res, y_res = smote.fit_resample(feat, label)
